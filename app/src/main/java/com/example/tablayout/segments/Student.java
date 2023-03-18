@@ -58,14 +58,51 @@ public class Student extends Fragment {
         Spinner SchSp = view.findViewById(R.id.spinnerSchool);
         Spinner DepSp = view.findViewById(R.id.spinnerDept);
         Spinner cousSp = view.findViewById(R.id.spinnerCourse);
-
+//define option for spinners
         String[] school_arr = new String[]{"School of Engineering", "School of CS & IT", "School of Nursing", "School of business"};
+        String[][]dept_arr = {{" Department of Mechanical Engineering", "Department of Mechatronic Engineering", "Department of Electrical and Electronic Engineering","  Department of Civil Engineering"},
+                                {"  Department of Computer science", "  Department of It"},
+                                {"  Department of nursing"},
+                                {"  Department of BBA","  Department of Bcom"}};
+        String[][]course_arr = {{" Bsc Mechanical Engineering", "Bsc Mechatronic Engineering", "Bsc Electrical and Electronic Engineering","  Bsc Civil Engineering"},
+                {"  Bsc Computer science", " Bsc IT","BB IT"},
+                {"  Bsc nursing"},
+                {"  Bachelor of business administration"," Bachelor of commerce"}};
+
+
+
+// Set up the dept spinner based on the selected value of the school
+        SchSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String[] options = dept_arr[position];
+                ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, options);
+                adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                DepSp.setAdapter(adapter2);
+
+                // Set up the course spinner based on the selected value of the school
+                        String[] options3 = course_arr[position];
+                        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, options3);
+                        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        cousSp.setAdapter(adapter3);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+
+        });
+
+
+
 //set adapter for spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, school_arr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SchSp.setAdapter(adapter);
 
 
+//send data to firestore when button is clicked
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +116,10 @@ public class Student extends Fragment {
 
                 String selectedGender_Value = selectedGender.getText().toString();
                 String selectedSchool= (String) SchSp.getSelectedItem();
+                String selectedDep= (String) DepSp.getSelectedItem();
+                String selectedcourse= (String) cousSp.getSelectedItem();
+
+
 
 
                 if (TextUtils.isEmpty(firstName) | TextUtils.isEmpty(SecondName) | TextUtils.isEmpty(LastNAme) | TextUtils.isEmpty(idNamba) | TextUtils.isEmpty(RegNamba)) {
@@ -101,6 +142,9 @@ public class Student extends Fragment {
                     data.put("Registration number",RegNamba);
                     data.put("Gender",selectedGender_Value);
                     data.put("School",selectedSchool);
+                    data.put("department",selectedDep);
+                    data.put("course",selectedcourse);
+
 
 //check if user with that id exist
                     DocumentReference docRef = db.collection("Students").document(idNo.getText().toString());
@@ -112,6 +156,10 @@ public class Student extends Fragment {
                                 DocumentSnapshot document = task.getResult();
                                 if (document.exists()) {
                                     Toast.makeText(getContext(), "student with that id already exists!", Toast.LENGTH_LONG).show();
+                                }
+                                else{
+                                    Toast.makeText(getContext(), "data added successfully.", Toast.LENGTH_LONG).show();
+
                                 }
                     };
 
