@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "245295025869",
+    "project_id": "tablout-911b3",
+    "storage_bucket": "tablout-911b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245295025869:android:ed5556ef988541e9fba384",
+        "android_client_info": {
+          "package_name": "com.example.tablayout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245295025869-r995ogcft76apfo6j79k7tk2944br8re.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvXMdbYudyd3zm7pp8HClaUIvGqogN5IU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245295025869-r995ogcft76apfo6j79k7tk2944br8re.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

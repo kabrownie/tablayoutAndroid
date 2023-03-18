@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">tablayout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+<!--    -->
+<!--    <string name="selectDept"> Choose depertment</string>-->
+<!--        <string-array name="dept_array">-->
+<!--            <item>dept 1</item>-->
+<!--            <item>dept 2</item>-->
+<!--            <item>dept 3</item>-->
+<!--            <item>dept 4</item>-->
+
+<!--        </string-array>-->
+<!--    <string name="selectcourse">Choose Course </string>-->
+<!--        <string-array name="course_array">-->
+<!--            <item>course 1</item>-->
+<!--            <item>course 2</item>-->
+<!--            <item>couse 3</item>-->
+<!--            <item>couse 4</item>-->
+
+<!--        </string-array>-->
+
+<!--<string name="selectSchool">Choose school</string>-->
+
+
+<!--    <string-array name="school_array">-->
+<!--        <item>engineering</item>-->
+<!--        <item>cs it</item>-->
+<!--        <item>bussiness</item>-->
+<!--        <item>science</item>-->
+<!--    </string-array>-->
+</resources>
